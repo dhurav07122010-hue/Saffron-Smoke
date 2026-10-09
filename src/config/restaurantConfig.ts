@@ -79,7 +79,7 @@ export const RESTAURANT_CONFIG = {
       dietary: "veg" as const,
       spiceLevel: "medium" as const,
       description: "Charred Malai paneer marinated 18 hours in stone-ground Kashmiri chilies, hung curd, mustard oil & charred baby bell peppers.",
-      image: "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?auto=format&fit=crop&w=900&q=80",
+      image: "/images/dishes/paneer-tikka.jpg",
       pairingNote: "Pairs with Smoked Saffron Cooler",
       badge: "Chef's Signature"
     },
@@ -90,7 +90,7 @@ export const RESTAURANT_CONFIG = {
       dietary: "non-veg" as const,
       spiceLevel: "mild" as const,
       description: "Charcoal-roasted succulent chicken steeped in a slow-simmered vine tomato & cashew gravy, churned white butter, and crushed Kasuri methi.",
-      image: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=900&q=80",
+      image: "/images/dishes/butter-chicken.jpg",
       pairingNote: "Best enjoyed with Truffle Garlic Naan",
       badge: "House Heritage"
     },
@@ -101,7 +101,7 @@ export const RESTAURANT_CONFIG = {
       dietary: "non-veg" as const,
       spiceLevel: "medium" as const,
       description: "Fragrant aged basmati rice layered with caramelized shallots, saffron-infused milk, whole royal spices, and sealed under a dough purdah.",
-      image: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=900&q=80",
+      image: "/images/dishes/dum-biryani.jpg",
       pairingNote: "Accompanied by Burani Raita & Mirchi Salan",
       badge: "Slow Cooked 4 hrs"
     },
@@ -112,7 +112,7 @@ export const RESTAURANT_CONFIG = {
       dietary: "veg" as const,
       spiceLevel: "mild" as const,
       description: "Porous chenna medallions bathed in chilled Kashmiri saffron-infused clotted rabri, toasted pistachios, and hand-beaten silver vark.",
-      image: "https://images.unsplash.com/photo-1627834377411-8da5f4f09de8?auto=format&fit=crop&w=900&q=80",
+      image: "/images/dishes/saffron-rasmalai.jpg",
       pairingNote: "Served chilled with rose petal dust",
       badge: "Artisanal Dessert"
     }
@@ -132,7 +132,7 @@ export const RESTAURANT_CONFIG = {
       spiceLevel: "medium",
       isSignature: true,
       description: "Charred Malai paneer marinated 18 hours in stone-ground Kashmiri chilies, hung curd, and mustard oil.",
-      image: "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?auto=format&fit=crop&w=600&q=80"
+      image: "/images/dishes/paneer-tikka.jpg"
     },
     {
       id: "m-2",
@@ -163,7 +163,7 @@ export const RESTAURANT_CONFIG = {
       dietary: "non-veg",
       spiceLevel: "hot",
       description: "Boneless chicken thigh bites charred in traditional clay oven with crushed coriander seeds and black cumin.",
-      image: "https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?auto=format&fit=crop&w=600&q=80"
+      image: "/images/dishes/tandoori-chicken.jpg"
     },
     {
       id: "m-5",
@@ -186,7 +186,7 @@ export const RESTAURANT_CONFIG = {
       spiceLevel: "mild",
       isSignature: true,
       description: "Charcoal-roasted succulent chicken in velvety slow-simmered tomato-cashew reduction, churned butter & methi.",
-      image: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=600&q=80"
+      image: "/images/dishes/butter-chicken.jpg"
     },
     {
       id: "m-7",
@@ -197,7 +197,7 @@ export const RESTAURANT_CONFIG = {
       spiceLevel: "mild",
       isSignature: true,
       description: "Black lentils slow-cooked overnight on dying wood charcoal with sun-dried tomatoes, cream, and smoked butter.",
-      image: "https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=600&q=80"
+      image: "/images/dishes/dal-saffron.jpg"
     },
     {
       id: "m-8",
@@ -207,7 +207,7 @@ export const RESTAURANT_CONFIG = {
       dietary: "non-veg",
       spiceLevel: "medium",
       description: "Kashmiri slow-braised lamb shanks infused with mawal flowers, ratanjot bark, and Kashmiri whole chilies.",
-      image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=600&q=80"
+      image: "/images/dishes/nalli-rogan-josh.jpg"
     },
     {
       id: "m-9",
@@ -217,7 +217,7 @@ export const RESTAURANT_CONFIG = {
       dietary: "veg",
       spiceLevel: "medium",
       description: "Charred cottage cheese cubes cooked in spiced onion-tomato masala topped with smoked charcoal butter infusion.",
-      image: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=600&q=80"
+      image: "/images/dishes/paneer-lababdar.jpg"
     },
 
     // Biryani & Rice
@@ -230,7 +230,7 @@ export const RESTAURANT_CONFIG = {
       spiceLevel: "medium",
       isSignature: true,
       description: "Fragrant aged basmati rice layered with marinated spiced cuts, golden fried onions, saffron milk, sealed in clay pot.",
-      image: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=600&q=80"
+      image: "/images/dishes/dum-biryani.jpg"
     },
     {
       id: "m-11",
@@ -240,7 +240,7 @@ export const RESTAURANT_CONFIG = {
       dietary: "veg",
       spiceLevel: "medium",
       description: "Farm-fresh florets, baby carrots, paneer, and long basmati grains steamed with mint, saffron, and Kewra water.",
-      image: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=600&q=80"
+      image: "/images/dishes/dum-biryani.jpg"
     },
     {
       id: "m-12",
@@ -251,7 +251,7 @@ export const RESTAURANT_CONFIG = {
       spiceLevel: "medium",
       isSignature: true,
       description: "Lucknowi yakhni-infused basmati rice with succulent boneless mutton pieces, cardamom, and ittar aromatics.",
-      image: "https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=600&q=80"
+      image: "/images/dishes/dum-biryani.jpg"
     },
 
     // Breads
@@ -262,7 +262,7 @@ export const RESTAURANT_CONFIG = {
       price: 149,
       dietary: "veg",
       description: "Clay-oven baked leavened flatbread brushed with black truffle butter, toasted garlic crisps, and fresh coriander.",
-      image: "https://images.unsplash.com/photo-1626074353765-517a681e40be?auto=format&fit=crop&w=600&q=80"
+      image: "/images/dishes/garlic-naan.jpg"
     },
     {
       id: "m-14",
@@ -271,7 +271,7 @@ export const RESTAURANT_CONFIG = {
       price: 169,
       dietary: "veg",
       description: "Traditional slightly sweet, milk-baked bread scented with warm saffron threads and cardamom ghee.",
-      image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
+      image: "/images/dishes/garlic-naan.jpg"
     },
     {
       id: "m-15",
@@ -280,7 +280,7 @@ export const RESTAURANT_CONFIG = {
       price: 119,
       dietary: "veg",
       description: "Multi-layered flaky whole wheat bread baked over charcoal embers with ajwain seeds and pure desi ghee.",
-      image: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=600&q=80"
+      image: "/images/dishes/garlic-naan.jpg"
     },
 
     // Desserts
@@ -292,7 +292,7 @@ export const RESTAURANT_CONFIG = {
       dietary: "veg",
       isSignature: true,
       description: "Delicate chenna dumplings steeped in chilled saffron-infused clotted milk, Iranian pistachios, and silver vark.",
-      image: "https://images.unsplash.com/photo-1627834377411-8da5f4f09de8?auto=format&fit=crop&w=600&q=80"
+      image: "/images/dishes/saffron-rasmalai.jpg"
     },
     {
       id: "m-17",
@@ -301,7 +301,7 @@ export const RESTAURANT_CONFIG = {
       price: 249,
       dietary: "veg",
       description: "Ghee-crisped French brioche soaked in saffron cardamom reduction, topped with reduced rabri and almond praline.",
-      image: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=600&q=80"
+      image: "/images/dishes/saffron-rasmalai.jpg"
     },
     {
       id: "m-18",
@@ -310,7 +310,7 @@ export const RESTAURANT_CONFIG = {
       price: 219,
       dietary: "veg",
       description: "Warm stuffed khoya dumplings flambéed tableside with aromatic spice liqueur and roasted almond slivers.",
-      image: "https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=600&q=80"
+      image: "/images/dishes/gulab-jamun.jpg"
     },
 
     // Drinks
@@ -385,7 +385,7 @@ export const RESTAURANT_CONFIG = {
       id: "g-3",
       title: "Hand-Crafted Dum Biryani",
       category: "Cuisine",
-      url: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=900&q=80",
+      url: "/images/dishes/dum-biryani.jpg",
       alt: "Aromatic saffron dum biryani served in traditional copper dish"
     },
     {
@@ -399,7 +399,7 @@ export const RESTAURANT_CONFIG = {
       id: "g-5",
       title: "Old Delhi Butter Chicken",
       category: "Cuisine",
-      url: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=900&q=80",
+      url: "/images/dishes/butter-chicken.jpg",
       alt: "Rich butter chicken in copper bowl with cilantro garnish"
     },
     {

@@ -53,9 +53,8 @@ export const SignatureDishes: React.FC<SignatureDishesProps> = ({ onSelectDishFo
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 filter brightness-95 group-hover:brightness-105"
                   loading="lazy"
                   onError={(e) => {
-                    // Safe fallback to verified high quality Indian cuisine image
-                    (e.target as HTMLImageElement).src =
-                      'https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=900&q=80';
+                    // Safe local fallback
+                    (e.target as HTMLImageElement).src = '/images/dishes/butter-chicken.jpg';
                   }}
                 />
                 
