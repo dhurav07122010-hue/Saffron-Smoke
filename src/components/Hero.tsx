@@ -14,12 +14,17 @@ export const Hero: React.FC = () => {
         <img
           src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=2000&q=85"
           alt="Warm ambient dining atmosphere at Saffron and Smoke"
-          className="w-full h-full object-cover object-center scale-105 transform animate-pulse duration-10000 opacity-25 filter contrast-125"
+          className="w-full h-full object-cover object-center scale-105 transform transition-transform duration-1000 opacity-45 filter contrast-110 brightness-95"
           loading="eager"
+          onError={(e) => {
+            // High reliability fallback
+            (e.target as HTMLImageElement).src =
+              'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=2000&q=85';
+          }}
         />
         {/* Deep Charcoal Gradients to blend smoothly with dark theme */}
-        <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950 via-charcoal-950/80 to-charcoal-950/60" />
-        <div className="absolute inset-0 bg-radial-gradient from-transparent via-charcoal-950/70 to-charcoal-950" />
+        <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950 via-charcoal-950/75 to-charcoal-950/60" />
+        <div className="absolute inset-0 bg-radial-gradient from-transparent via-charcoal-950/60 to-charcoal-950" />
       </div>
 
       {/* Decorative Gold & Saffron Glow Orbs */}

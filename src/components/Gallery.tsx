@@ -76,6 +76,10 @@ export const Gallery: React.FC = () => {
                 alt={item.alt}
                 className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-700 filter brightness-95 group-hover:brightness-105"
                 loading="lazy"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src =
+                    'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80';
+                }}
               />
 
               {/* Gradient overlay */}
@@ -131,6 +135,10 @@ export const Gallery: React.FC = () => {
                 src={activeItem.url}
                 alt={activeItem.alt}
                 className="max-h-[75vh] w-auto max-w-full object-contain"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src =
+                    'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80';
+                }}
               />
             </div>
 

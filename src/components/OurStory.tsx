@@ -22,6 +22,10 @@ export const OurStory: React.FC = () => {
                   alt="Culinary chef hand-crafting spices at Saffron and Smoke"
                   className="w-full h-[460px] object-cover object-center filter brightness-90 contrast-105"
                   loading="lazy"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src =
+                      'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=80';
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/80 via-transparent to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6">
@@ -124,6 +128,10 @@ export const OurStory: React.FC = () => {
                   src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=200&q=80"
                   alt="Executive Chef"
                   className="w-full h-full object-cover"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src =
+                      'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=200&q=80';
+                  }}
                 />
               </div>
               <div>

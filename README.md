@@ -13,9 +13,9 @@ This project is an award-winning style sales demo created to present to restaura
 
 - **Bespoke Luxury Aesthetics:** Deep charcoal/near-black canvas (`#09090B`), warm ivory typography (`#FAF8F5`), and warm saffron, copper, and gold accents.
 - **Cinematic Photography:** Real, high-resolution imagery curated specifically for Indian gastronomy (Tandoori Paneer Tikka, Old Delhi Butter Chicken, Dum Biryani, Saffron Rasmalai).
-- **Interactive Menu Experience:** Filterable categories (Starters, Main Course, Biryani & Rice, Breads, Desserts, Drinks) and dietary tags (Vegetarian, Non-Vegetarian) with a print/PDF catalog viewer.
-- **Conversion-Optimized Reservations:** Interactive booking form with input validation, demo confirmation state, and seamless WhatsApp inquiry integration.
-- **Client Customization in Minutes:** Every detail (branding, phone, WhatsApp, opening hours, menu items, prices in ₹ INR, and social links) is centralized in a single configuration file.
+- **Interactive Menu Experience:** Filterable categories (Starters, Main Course, Biryani & Rice, Breads, Desserts, Drinks) and dietary tags (Vegetarian, Non-Vegetarian) with visual dish photography and a print/PDF catalog viewer.
+- **Conversion-Optimized Reservations:** Interactive booking form with input validation, demo confirmation state, and direct dining concierge assistance.
+- **Client Customization in Minutes:** Every detail (branding, phone, opening hours, menu items, prices in ₹ INR, and social links) is centralized in a single configuration file.
 
 ---
 
@@ -52,7 +52,6 @@ To customize for another restaurant, simply edit:
    - `name`: Restaurant brand name (e.g. "Saffron & Smoke")
    - `tagline`: Brand slogan (e.g. "Tradition, Served With A Twist.")
    - `phone`: Contact telephone number
-   - `whatsappNumber`: International WhatsApp number without symbols (e.g. `919876543210`)
    - `email`: Reservations email address
    - `address`: Street, area, city, and map coordinates
 
@@ -82,15 +81,14 @@ Demo web/
 │   │   ├── Hero.tsx             # Cinematic hero section with CTA buttons
 │   │   ├── SignatureDishes.tsx  # 4 curated signature dishes with ₹ pricing
 │   │   ├── OurStory.tsx         # Editorial heritage & spice philosophy
-│   │   ├── InteractiveMenu.tsx  # Category tabs, dietary filters, item list
+│   │   ├── InteractiveMenu.tsx  # Category tabs, dietary filters, photo dish cards
 │   │   ├── MenuModal.tsx        # Complete printable / PDF menu catalog
 │   │   ├── ExperienceSection.tsx# 3 core pillars in asymmetrical layout
 │   │   ├── Gallery.tsx          # Responsive photo grid with lightbox modal
 │   │   ├── Testimonials.tsx     # Fictional sample guest quotes
 │   │   ├── ReservationForm.tsx  # Interactive table booking form with validation
 │   │   ├── LocationSection.tsx  # Google Maps embed, address, hours
-│   │   ├── Footer.tsx           # Brand story, links, hours, demo notice
-│   │   └── WhatsAppButton.tsx   # Floating concierge chat button
+│   │   └── Footer.tsx           # Brand story, links, hours, demo notice
 │   ├── App.tsx                  # Root layout composing sections
 │   ├── index.css                # Tailwind base + luxury dark theme styles
 │   └── main.tsx                 # React entrypoint

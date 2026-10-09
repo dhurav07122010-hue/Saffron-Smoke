@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, Clock, Users, Phone, User, MessageSquare, CheckCircle2, AlertCircle, Info, Sparkles, Send } from 'lucide-react';
+import { Calendar, Clock, Users, Phone, User, MessageSquare, CheckCircle2, AlertCircle, Info, Sparkles } from 'lucide-react';
 import { RESTAURANT_CONFIG } from '../config/restaurantConfig';
 
 interface ReservationFormProps {
@@ -96,13 +96,6 @@ export const ReservationForm: React.FC<ReservationFormProps> = ({ initialRequest
     }, 700);
   };
 
-  const handleWhatsAppInquiry = () => {
-    const text = encodeURIComponent(
-      `Hello Saffron & Smoke! I would like to reserve a table for ${formData.guests} guests on ${formData.date || 'upcoming date'} at ${formData.time}. Name: ${formData.name || 'Guest'}. Special request: ${formData.specialRequests || 'None'}. (Sent from Website Demo)`
-    );
-    window.open(`https://wa.me/${RESTAURANT_CONFIG.whatsappNumber}?text=${text}`, '_blank');
-  };
-
   const handleReset = () => {
     setBookingSuccess(null);
     setFormData({
@@ -179,21 +172,14 @@ export const ReservationForm: React.FC<ReservationFormProps> = ({ initialRequest
                   <span className="text-ivory-100">{bookingSuccess.date} at {bookingSuccess.time}</span>
                 </div>
                 <div className="pt-1 text-xs text-gold-400 italic">
-                  Note: In a production deployment, this submits to the restaurant's table management system (such as Posist, Dineout, or custom webhook) and triggers instant SMS & WhatsApp confirmations.
+                  Note: In a production deployment, this submits to the restaurant's table management system (such as Posist, Dineout, or custom webhook) and triggers instant SMS confirmations.
                 </div>
               </div>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                 <button
-                  onClick={handleWhatsAppInquiry}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-wider bg-emerald-600 hover:bg-emerald-500 text-white transition-colors"
-                >
-                  <Send className="w-3.5 h-3.5" />
-                  Send Confirmation to WhatsApp
-                </button>
-                <button
                   onClick={handleReset}
-                  className="w-full sm:w-auto px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-wider bg-charcoal-800 hover:bg-charcoal-700 text-ivory-200 transition-colors"
+                  className="w-full sm:w-auto px-8 py-3 rounded-full text-xs font-semibold uppercase tracking-wider bg-gradient-to-r from-saffron-600 to-copper-500 text-ivory-50 transition-colors"
                 >
                   Book Another Table
                 </button>
@@ -379,7 +365,7 @@ export const ReservationForm: React.FC<ReservationFormProps> = ({ initialRequest
                 </div>
               </div>
 
-              {/* Submit CTA & WhatsApp alternative */}
+              {/* Submit CTA */}
               <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <button
                   type="submit"
@@ -392,15 +378,14 @@ export const ReservationForm: React.FC<ReservationFormProps> = ({ initialRequest
 
                 <div className="text-center sm:text-right">
                   <span className="text-xs text-ivory-400 block">
-                    Prefer direct booking or instant confirmation?
+                    Direct phone assistance available during dining hours:
                   </span>
-                  <button
-                    type="button"
-                    onClick={handleWhatsAppInquiry}
-                    className="mt-1 text-xs text-emerald-400 hover:text-emerald-300 font-medium underline underline-offset-4 inline-flex items-center gap-1"
+                  <a
+                    href={`tel:${RESTAURANT_CONFIG.phone}`}
+                    className="mt-1 text-xs text-gold-400 hover:text-gold-300 font-medium underline underline-offset-4 inline-flex items-center gap-1 font-mono"
                   >
-                    <span>Book directly via WhatsApp &rarr;</span>
-                  </button>
+                    <span>{RESTAURANT_CONFIG.phone}</span>
+                  </a>
                 </div>
               </div>
 

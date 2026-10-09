@@ -11,7 +11,6 @@ import { Testimonials } from './components/Testimonials';
 import { ReservationForm } from './components/ReservationForm';
 import { LocationSection } from './components/LocationSection';
 import { Footer } from './components/Footer';
-import { WhatsAppButton } from './components/WhatsAppButton';
 
 export function App() {
   const [selectedDishForReservation, setSelectedDishForReservation] = useState<string>('');
@@ -67,9 +66,6 @@ export function App() {
 
       {/* 12. Footer */}
       <Footer />
-
-      {/* 13. Floating WhatsApp Conversion Button */}
-      <WhatsAppButton />
     </div>
   );
 }

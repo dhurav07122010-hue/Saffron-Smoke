@@ -113,80 +113,100 @@ export const InteractiveMenu: React.FC<InteractiveMenuProps> = ({ onSelectItemFo
           </div>
         </div>
 
-        {/* Menu Items Grid */}
+        {/* Menu Items Grid with Photo Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {filteredItems.map((item) => (
             <div
               key={item.id}
-              className="group bg-charcoal-900/70 border border-charcoal-800/90 hover:border-gold-subtle rounded-2xl p-5 sm:p-6 transition-all duration-300 hover:bg-charcoal-900/90 hover:shadow-card-glow flex flex-col justify-between"
+              className="group bg-charcoal-900/80 border border-charcoal-800 hover:border-gold-subtle rounded-2xl p-4 sm:p-5 transition-all duration-300 hover:bg-charcoal-900 hover:shadow-card-glow flex flex-col sm:flex-row gap-5 justify-between"
             >
-              <div>
-                {/* Header: Name, Price, Badges */}
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex items-center gap-2.5 flex-wrap">
-                    {/* Dietary Icon */}
-                    {item.dietary === 'veg' ? (
-                      <div
-                        className="w-4 h-4 border border-emerald-500 rounded-sm flex items-center justify-center shrink-0"
-                        title="Vegetarian"
-                      >
-                        <div className="w-2 h-2 rounded-full bg-emerald-500" />
-                      </div>
-                    ) : item.dietary === 'non-veg' ? (
-                      <div
-                        className="w-4 h-4 border border-red-500 rounded-sm flex items-center justify-center shrink-0"
-                        title="Non-Vegetarian"
-                      >
-                        <div className="w-2 h-2 rounded-full bg-red-500" />
-                      </div>
-                    ) : null}
+              {/* Dish Thumbnail */}
+              {item.image && (
+                <div className="relative w-full sm:w-28 sm:h-28 aspect-[16/10] sm:aspect-square rounded-xl overflow-hidden bg-charcoal-950 shrink-0 border border-charcoal-800">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-500"
+                    loading="lazy"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src =
+                        'https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=600&q=80';
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/60 via-transparent to-transparent sm:hidden" />
+                </div>
+              )}
 
-                    <h3 className="font-serif text-lg sm:text-xl font-medium text-ivory-50 group-hover:text-gold-300 transition-colors">
-                      {item.name}
-                    </h3>
+              {/* Dish Info & Actions */}
+              <div className="flex-1 flex flex-col justify-between">
+                <div>
+                  {/* Header: Name, Price, Badges */}
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      {/* Dietary Icon */}
+                      {item.dietary === 'veg' ? (
+                        <div
+                          className="w-3.5 h-3.5 border border-emerald-500 rounded-sm flex items-center justify-center shrink-0"
+                          title="Vegetarian"
+                        >
+                          <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                        </div>
+                      ) : item.dietary === 'non-veg' ? (
+                        <div
+                          className="w-3.5 h-3.5 border border-red-500 rounded-sm flex items-center justify-center shrink-0"
+                          title="Non-Vegetarian"
+                        >
+                          <div className="w-1.5 h-1.5 rounded-full bg-red-500" />
+                        </div>
+                      ) : null}
 
-                    {item.isSignature && (
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold tracking-wider uppercase bg-saffron-500/20 text-saffron-300 border border-saffron-500/30">
-                        <Sparkles className="w-2.5 h-2.5" />
-                        Signature
+                      <h3 className="font-serif text-base sm:text-lg font-medium text-ivory-50 group-hover:text-gold-300 transition-colors">
+                        {item.name}
+                      </h3>
+
+                      {item.isSignature && (
+                        <span className="inline-flex items-center gap-1 px-2 py-0.2 rounded-full text-[9px] font-semibold tracking-wider uppercase bg-saffron-500/20 text-saffron-300 border border-saffron-500/30">
+                          <Sparkles className="w-2.5 h-2.5" />
+                          Signature
+                        </span>
+                      )}
+
+                      {item.spiceLevel === 'hot' && (
+                        <span className="inline-flex items-center gap-0.5 text-[10px] text-amber-500">
+                          <Flame className="w-3 h-3 fill-amber-500" />
+                          Spicy
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Price */}
+                    <div className="shrink-0 text-right">
+                      <span className="font-serif text-sm sm:text-base font-semibold text-saffron-400">
+                        ₹{item.price}
                       </span>
-                    )}
-
-                    {item.spiceLevel === 'hot' && (
-                      <span className="inline-flex items-center gap-0.5 text-[10px] text-amber-500">
-                        <Flame className="w-3 h-3 fill-amber-500" />
-                        Spicy
-                      </span>
-                    )}
+                    </div>
                   </div>
 
-                  {/* Price */}
-                  <div className="shrink-0 text-right">
-                    <span className="font-serif text-base sm:text-lg font-semibold text-saffron-400">
-                      ₹{item.price}
-                    </span>
-                  </div>
+                  {/* Description */}
+                  <p className="mt-2 text-xs sm:text-sm text-ivory-300 font-light leading-relaxed">
+                    {item.description}
+                  </p>
                 </div>
 
-                {/* Description */}
-                <p className="mt-3 text-xs sm:text-sm text-ivory-300 font-light leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
+                {/* Bottom Quick Action */}
+                <div className="mt-4 pt-3 border-t border-charcoal-800/60 flex items-center justify-between text-xs text-ivory-400">
+                  <span className="text-[10px] font-mono text-ivory-500 uppercase tracking-wider">
+                    {item.category}
+                  </span>
 
-              {/* Bottom Quick Action */}
-              <div className="mt-4 pt-3 border-t border-charcoal-800/60 flex items-center justify-between text-xs text-ivory-400">
-                <span className="text-[11px] font-mono text-ivory-500 uppercase tracking-wider">
-                  Category: {item.category}
-                </span>
-
-                <a
-                  href="#reservations"
-                  onClick={() => onSelectItemForReservation?.(item.name)}
-                  className="text-xs text-gold-400 hover:text-gold-300 font-medium inline-flex items-center gap-1 hover:underline underline-offset-4"
-                >
-                  Reserve For This Dish &rarr;
-                </a>
+                  <a
+                    href="#reservations"
+                    onClick={() => onSelectItemForReservation?.(item.name)}
+                    className="text-xs text-gold-400 hover:text-gold-300 font-medium inline-flex items-center gap-1 hover:underline underline-offset-4"
+                  >
+                    Reserve For This Dish &rarr;
+                  </a>
+                </div>
               </div>
             </div>
           ))}

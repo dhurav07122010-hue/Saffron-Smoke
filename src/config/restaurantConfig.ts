@@ -44,8 +44,6 @@ export const RESTAURANT_CONFIG = {
   // Contact and Location (clearly marked fictional demo)
   isDemoNotice: "Demo Presentation — Built for restaurant clients",
   phone: "+91 98765 43210",
-  whatsappNumber: "919876543210",
-  whatsappDefaultMessage: "Hello Saffron & Smoke! I would like to inquire about reserving a table.",
   email: "reservations@saffronandsmoke-demo.com",
   address: {
     line1: "42 Heritage Boulevard, 12th Main",
@@ -209,7 +207,7 @@ export const RESTAURANT_CONFIG = {
       dietary: "non-veg",
       spiceLevel: "medium",
       description: "Kashmiri slow-braised lamb shanks infused with mawal flowers, ratanjot bark, and Kashmiri whole chilies.",
-      image: "https://images.unsplash.com/photo-1545247181-516773cae7be?auto=format&fit=crop&w=600&q=80"
+      image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=600&q=80"
     },
     {
       id: "m-9",
@@ -242,7 +240,7 @@ export const RESTAURANT_CONFIG = {
       dietary: "veg",
       spiceLevel: "medium",
       description: "Farm-fresh florets, baby carrots, paneer, and long basmati grains steamed with mint, saffron, and Kewra water.",
-      image: "https://images.unsplash.com/photo-1642821373181-696a54913e9a?auto=format&fit=crop&w=600&q=80"
+      image: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=600&q=80"
     },
     {
       id: "m-12",
@@ -312,7 +310,7 @@ export const RESTAURANT_CONFIG = {
       price: 219,
       dietary: "veg",
       description: "Warm stuffed khoya dumplings flambéed tableside with aromatic spice liqueur and roasted almond slivers.",
-      image: "https://images.unsplash.com/photo-1589119908995-c6837fa14d48?auto=format&fit=crop&w=600&q=80"
+      image: "https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=600&q=80"
     },
 
     // Drinks
