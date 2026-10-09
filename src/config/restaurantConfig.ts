@@ -143,7 +143,7 @@ export const RESTAURANT_CONFIG = {
       spiceLevel: "medium",
       isSignature: true,
       description: "Melt-in-mouth smoked lamb patties infused with 28 Awadhi spices, placed on saffron ulte tawa paratha rounds.",
-      image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80"
+      image: "/images/dishes/galouti-kebab.jpg"
     },
     {
       id: "m-3",
@@ -153,7 +153,7 @@ export const RESTAURANT_CONFIG = {
       dietary: "veg",
       spiceLevel: "mild",
       description: "Crispy lotus stem crisps tossed in tamarind reduction, spiced yogurt drizzle, and roasted pomegranate seeds.",
-      image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
+      image: "/images/dishes/lotus-chaat.jpg"
     },
     {
       id: "m-4",
@@ -173,7 +173,7 @@ export const RESTAURANT_CONFIG = {
       dietary: "veg",
       spiceLevel: "mild",
       description: "Crispy golden shells encasing hung curd infused with green cardamom, ginger, and fresh mint.",
-      image: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=600&q=80"
+      image: "/images/dishes/dahi-kebab.jpg"
     },
 
     // Main Course
@@ -240,7 +240,7 @@ export const RESTAURANT_CONFIG = {
       dietary: "veg",
       spiceLevel: "medium",
       description: "Farm-fresh florets, baby carrots, paneer, and long basmati grains steamed with mint, saffron, and Kewra water.",
-      image: "/images/dishes/dum-biryani.jpg"
+      image: "/images/dishes/veg-biryani.jpg"
     },
     {
       id: "m-12",
@@ -251,7 +251,7 @@ export const RESTAURANT_CONFIG = {
       spiceLevel: "medium",
       isSignature: true,
       description: "Lucknowi yakhni-infused basmati rice with succulent boneless mutton pieces, cardamom, and ittar aromatics.",
-      image: "/images/dishes/dum-biryani.jpg"
+      image: "/images/dishes/mutton-biryani.jpg"
     },
 
     // Breads
@@ -271,7 +271,7 @@ export const RESTAURANT_CONFIG = {
       price: 169,
       dietary: "veg",
       description: "Traditional slightly sweet, milk-baked bread scented with warm saffron threads and cardamom ghee.",
-      image: "/images/dishes/garlic-naan.jpg"
+      image: "/images/dishes/sheermal.jpg"
     },
     {
       id: "m-15",
@@ -280,7 +280,7 @@ export const RESTAURANT_CONFIG = {
       price: 119,
       dietary: "veg",
       description: "Multi-layered flaky whole wheat bread baked over charcoal embers with ajwain seeds and pure desi ghee.",
-      image: "/images/dishes/garlic-naan.jpg"
+      image: "/images/dishes/laccha-paratha.jpg"
     },
 
     // Desserts
@@ -301,7 +301,7 @@ export const RESTAURANT_CONFIG = {
       price: 249,
       dietary: "veg",
       description: "Ghee-crisped French brioche soaked in saffron cardamom reduction, topped with reduced rabri and almond praline.",
-      image: "/images/dishes/saffron-rasmalai.jpg"
+      image: "/images/dishes/shahi-tukda.jpg"
     },
     {
       id: "m-18",
@@ -383,24 +383,24 @@ export const RESTAURANT_CONFIG = {
     },
     {
       id: "g-3",
-      title: "Hand-Crafted Dum Biryani",
+      title: "Royal Culinary Presentation",
       category: "Cuisine",
-      url: "/images/dishes/dum-biryani.jpg",
-      alt: "Aromatic saffron dum biryani served in traditional copper dish"
+      url: "/images/dishes/indian-thali.jpg",
+      alt: "Royal handcrafted Indian dining feast with assortment of curries and bread"
     },
     {
       id: "g-4",
       title: "Smoked Cocktail Crafting",
       category: "Craft",
-      url: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=900&q=80",
+      url: "https://images.unsplash.com/photo-1574096079513-d8259312b785?auto=format&fit=crop&w=900&q=80",
       alt: "Bar mixologist crafting smoked saffron cocktail with citrus peel"
     },
     {
       id: "g-5",
-      title: "Old Delhi Butter Chicken",
+      title: "Signature Artisanal Curry Spread",
       category: "Cuisine",
-      url: "/images/dishes/butter-chicken.jpg",
-      alt: "Rich butter chicken in copper bowl with cilantro garnish"
+      url: "/images/dishes/royal-curry-spread.jpg",
+      alt: "Authentic copper karahi spread of rich slow-simmered Indian curries"
     },
     {
       id: "g-6",
