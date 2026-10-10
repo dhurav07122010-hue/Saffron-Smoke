@@ -1,6 +1,8 @@
 import React from 'react';
-import { Utensils, ArrowUp, Phone, Mail, MapPin } from 'lucide-react';
+import { Utensils, ArrowUp, Mail, MapPin } from 'lucide-react';
 import { RESTAURANT_CONFIG } from '../config/restaurantConfig';
+
+const CURRENT_YEAR = new Date().getFullYear();
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -131,12 +133,6 @@ export const Footer: React.FC = () => {
                 <span>Indiranagar, Bengaluru, Karnataka</span>
               </p>
               <p className="flex items-center gap-2">
-                <Phone className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                <a href={`tel:${RESTAURANT_CONFIG.phone}`} className="hover:text-ivory-200 font-mono">
-                  {RESTAURANT_CONFIG.phone}
-                </a>
-              </p>
-              <p className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-saffron-400 shrink-0" />
                 <a href={`mailto:${RESTAURANT_CONFIG.email}`} className="hover:text-ivory-200">
                   {RESTAURANT_CONFIG.email}
@@ -160,7 +156,7 @@ export const Footer: React.FC = () => {
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-ivory-500">
           
           <div className="flex flex-col sm:flex-row items-center gap-2 text-center md:text-left">
-            <span>&copy; {new Date().getFullYear()} {RESTAURANT_CONFIG.name}. Fictional Demo Website.</span>
+            <span>&copy; {CURRENT_YEAR} {RESTAURANT_CONFIG.name}. Fictional Demo Website.</span>
             <span className="hidden sm:inline">&bull;</span>
             <span className="text-gold-500/80">
               Ready for client demonstration and full restaurant customization.

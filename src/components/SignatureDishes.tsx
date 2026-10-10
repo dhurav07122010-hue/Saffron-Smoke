@@ -10,7 +10,7 @@ export const SignatureDishes: React.FC<SignatureDishesProps> = ({ onSelectDishFo
   return (
     <section
       id="signature-dishes"
-      className="py-24 bg-charcoal-950 relative border-t border-charcoal-850"
+      className="py-24 scroll-mt-20 bg-charcoal-950 relative border-t border-charcoal-850"
       aria-label="Signature dishes"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

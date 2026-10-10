@@ -5,7 +5,7 @@ export const OurStory: React.FC = () => {
   return (
     <section
       id="story"
-      className="py-24 bg-charcoal-900/60 relative overflow-hidden border-t border-charcoal-850"
+      className="py-24 scroll-mt-20 bg-charcoal-900/60 relative overflow-hidden border-t border-charcoal-850"
       aria-label="Our culinary philosophy and story"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

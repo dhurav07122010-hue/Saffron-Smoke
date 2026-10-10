@@ -75,3 +75,17 @@
   outline: 2px solid #E07A2A;
   outline-offset: 2px;
 }
+
+/* Mobile Drawer Slide-in Animation */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-drawer-in {
+  animation: slideInRight 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}

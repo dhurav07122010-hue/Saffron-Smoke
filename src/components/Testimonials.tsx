@@ -6,7 +6,7 @@ export const Testimonials: React.FC = () => {
   return (
     <section
       id="testimonials"
-      className="py-24 bg-charcoal-900/60 relative border-t border-charcoal-850"
+      className="py-24 scroll-mt-20 bg-charcoal-900/60 relative border-t border-charcoal-850"
       aria-label="Sample guest experiences"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

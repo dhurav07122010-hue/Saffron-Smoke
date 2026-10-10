@@ -43,7 +43,6 @@ export const RESTAURANT_CONFIG = {
 
   // Contact and Location (clearly marked fictional demo)
   isDemoNotice: "Demo Presentation — Built for restaurant clients",
-  phone: "+91 98765 43210",
   email: "reservations@saffronandsmoke-demo.com",
   address: {
     line1: "42 Heritage Boulevard, 12th Main",

@@ -6,7 +6,7 @@ export const Hero: React.FC = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-[92vh] flex items-center justify-center overflow-hidden pt-12 pb-20"
+      className="relative min-h-[92vh] flex items-center justify-center overflow-hidden pt-12 pb-20 scroll-mt-20"
       aria-label="Welcome to Saffron & Smoke"
     >
       {/* Background Cinematic Food Imagery & Overlays */}

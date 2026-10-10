@@ -1,12 +1,12 @@
 import React from 'react';
-import { MapPin, Clock, Phone, Mail, Navigation, Car, AlertTriangle, ShieldCheck } from 'lucide-react';
+import { MapPin, Clock, Calendar, Mail, Navigation, Car, AlertTriangle, ShieldCheck } from 'lucide-react';
 import { RESTAURANT_CONFIG } from '../config/restaurantConfig';
 
 export const LocationSection: React.FC = () => {
   return (
     <section
       id="contact"
-      className="py-24 bg-charcoal-900/60 relative border-t border-charcoal-850"
+      className="py-24 scroll-mt-20 bg-charcoal-900/60 relative border-t border-charcoal-850"
       aria-label="Location and opening hours"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -94,14 +94,14 @@ export const LocationSection: React.FC = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <span className="text-[11px] uppercase tracking-wider text-ivory-400 block mb-1">
-                    Direct Inquiries
+                    Table Reservations
                   </span>
                   <a
-                    href={`tel:${RESTAURANT_CONFIG.phone}`}
-                    className="inline-flex items-center gap-2 text-sm text-ivory-100 hover:text-gold-300 font-mono transition-colors"
+                    href="#reservations"
+                    className="inline-flex items-center gap-2 text-sm text-ivory-100 hover:text-gold-300 font-medium transition-colors"
                   >
-                    <Phone className="w-3.5 h-3.5 text-emerald-400" />
-                    <span>{RESTAURANT_CONFIG.phone}</span>
+                    <Calendar className="w-3.5 h-3.5 text-saffron-400" />
+                    <span>Reserve a Table &rarr;</span>
                   </a>
                 </div>
 
@@ -113,7 +113,7 @@ export const LocationSection: React.FC = () => {
                     href={`mailto:${RESTAURANT_CONFIG.email}`}
                     className="inline-flex items-center gap-2 text-sm text-ivory-100 hover:text-gold-300 transition-colors truncate max-w-full"
                   >
-                    <Mail className="w-3.5 h-3.5 text-saffron-400 shrink-0" />
+                    <Mail className="w-3.5 h-3.5 text-gold-400 shrink-0" />
                     <span className="truncate">{RESTAURANT_CONFIG.email}</span>
                   </a>
                 </div>

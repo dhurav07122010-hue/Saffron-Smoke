@@ -15,7 +15,7 @@ export const Gallery: React.FC = () => {
   return (
     <section
       id="gallery"
-      className="py-24 bg-charcoal-950 relative border-t border-charcoal-850"
+      className="py-24 scroll-mt-20 bg-charcoal-950 relative border-t border-charcoal-850"
       aria-label="Restaurant photo gallery"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

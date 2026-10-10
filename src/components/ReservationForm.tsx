@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Calendar, Clock, Users, Phone, User, MessageSquare, CheckCircle2, AlertCircle, Info, Sparkles } from 'lucide-react';
+import React, { useState } from 'react';
+import { Calendar, Clock, Users, Mail, User, MessageSquare, CheckCircle2, AlertCircle, Info, Sparkles } from 'lucide-react';
 import { RESTAURANT_CONFIG } from '../config/restaurantConfig';
+
+// Pure constant defined at module scope for React purity compliance
+const TODAY_DATE = new Date().toISOString().split('T')[0];
 
 interface ReservationFormProps {
   initialRequest?: string;
@@ -9,14 +12,17 @@ interface ReservationFormProps {
 export const ReservationForm: React.FC<ReservationFormProps> = ({ initialRequest = '' }) => {
   const [formData, setFormData] = useState({
     name: '',
-    phone: '',
+    email: '',
     date: '',
     time: '19:30',
     guests: '2',
     specialRequests: initialRequest,
   });
 
-  useEffect(() => {
+  // Adjust state during render when prop changes (avoids cascading useEffect renders)
+  const [prevInitialRequest, setPrevInitialRequest] = useState(initialRequest);
+  if (initialRequest !== prevInitialRequest) {
+    setPrevInitialRequest(initialRequest);
     if (initialRequest) {
       setFormData((prev) => ({
         ...prev,
@@ -25,20 +31,18 @@ export const ReservationForm: React.FC<ReservationFormProps> = ({ initialRequest
           : `Interested in: ${initialRequest}`,
       }));
     }
-  }, [initialRequest]);
+  }
 
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [bookingSuccess, setBookingSuccess] = useState<null | {
     reference: string;
     name: string;
+    email: string;
     guests: string;
     date: string;
     time: string;
   }>(null);
-
-  // Suggested today date minimum for input
-  const today = new Date().toISOString().split('T')[0];
 
   const validate = () => {
     const newErrors: Record<string, string> = {};
@@ -47,10 +51,10 @@ export const ReservationForm: React.FC<ReservationFormProps> = ({ initialRequest
       newErrors.name = 'Please provide your full name (minimum 2 characters)';
     }
 
-    // Phone validation (accepting 10 digits or with +91)
-    const phoneClean = formData.phone.replace(/[\s\-()]/g, '');
-    if (!phoneClean || phoneClean.length < 10) {
-      newErrors.phone = 'Please provide a valid 10-digit phone number';
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.email.trim() || !emailRegex.test(formData.email.trim())) {
+      newErrors.email = 'Please provide a valid email address';
     }
 
     if (!formData.date) {
@@ -68,7 +72,7 @@ export const ReservationForm: React.FC<ReservationFormProps> = ({ initialRequest
       newErrors.time = 'Please select a dining time slot';
     }
 
-    if (!formData.guests || parseInt(formData.guests) < 1) {
+    if (!formData.guests || parseInt(formData.guests, 10) < 1) {
       newErrors.guests = 'Please select at least 1 guest';
     }
 
@@ -89,6 +93,7 @@ export const ReservationForm: React.FC<ReservationFormProps> = ({ initialRequest
       setBookingSuccess({
         reference: randomRef,
         name: formData.name,
+        email: formData.email,
         guests: formData.guests,
         date: formData.date,
         time: formData.time,
@@ -100,7 +105,7 @@ export const ReservationForm: React.FC<ReservationFormProps> = ({ initialRequest
     setBookingSuccess(null);
     setFormData({
       name: '',
-      phone: '',
+      email: '',
       date: '',
       time: '19:30',
       guests: '2',
@@ -112,7 +117,7 @@ export const ReservationForm: React.FC<ReservationFormProps> = ({ initialRequest
   return (
     <section
       id="reservations"
-      className="py-24 bg-charcoal-950 relative border-t border-charcoal-850"
+      className="py-24 scroll-mt-20 bg-charcoal-950 relative border-t border-charcoal-850"
       aria-label="Table reservation"
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -145,7 +150,7 @@ export const ReservationForm: React.FC<ReservationFormProps> = ({ initialRequest
           
           {bookingSuccess ? (
             /* Success Feedback State */
-            <div className="text-center py-8 px-4 max-w-xl mx-auto animate-in fade-in zoom-in-95 duration-300">
+            <div className="text-center py-8 px-4 max-w-xl mx-auto">
               <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mx-auto mb-6">
                 <CheckCircle2 className="w-8 h-8" />
               </div>
@@ -164,6 +169,10 @@ export const ReservationForm: React.FC<ReservationFormProps> = ({ initialRequest
                   <span className="font-mono text-saffron-400 font-semibold">{bookingSuccess.reference}</span>
                 </div>
                 <div className="flex justify-between border-b border-charcoal-850 pb-2">
+                  <span className="text-ivory-400">Confirmation Sent:</span>
+                  <span className="text-ivory-100 font-mono">{bookingSuccess.email}</span>
+                </div>
+                <div className="flex justify-between border-b border-charcoal-850 pb-2">
                   <span className="text-ivory-400">Table for:</span>
                   <span className="text-ivory-100">{bookingSuccess.guests} Guests</span>
                 </div>
@@ -172,12 +181,13 @@ export const ReservationForm: React.FC<ReservationFormProps> = ({ initialRequest
                   <span className="text-ivory-100">{bookingSuccess.date} at {bookingSuccess.time}</span>
                 </div>
                 <div className="pt-1 text-xs text-gold-400 italic">
-                  Note: In a production deployment, this submits to the restaurant's table management system (such as Posist, Dineout, or custom webhook) and triggers instant SMS confirmations.
+                  Note: In a production deployment, this submits to the restaurant's table management system (such as Posist, Dineout, or custom webhook) and triggers instant confirmations.
                 </div>
               </div>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                 <button
+                  type="button"
                   onClick={handleReset}
                   className="w-full sm:w-auto px-8 py-3 rounded-full text-xs font-semibold uppercase tracking-wider bg-gradient-to-r from-saffron-600 to-copper-500 text-ivory-50 transition-colors"
                 >
@@ -220,32 +230,32 @@ export const ReservationForm: React.FC<ReservationFormProps> = ({ initialRequest
                   )}
                 </div>
 
-                {/* Phone Number */}
+                {/* Contact Email */}
                 <div>
-                  <label htmlFor="res-phone" className="block text-xs uppercase tracking-wider text-ivory-300 font-medium mb-2">
-                    Contact Phone <span className="text-saffron-500">*</span>
+                  <label htmlFor="res-email" className="block text-xs uppercase tracking-wider text-ivory-300 font-medium mb-2">
+                    Contact Email <span className="text-saffron-500">*</span>
                   </label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-ivory-400">
-                      <Phone className="w-4 h-4" />
+                      <Mail className="w-4 h-4" />
                     </div>
                     <input
-                      id="res-phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      placeholder="+91 98765 43210"
+                      id="res-email"
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      placeholder="e.g. guest@example.com"
                       className={`w-full pl-10 pr-4 py-3 rounded-xl bg-charcoal-950 border text-ivory-100 text-sm focus:outline-none focus:ring-1 transition-colors ${
-                        errors.phone
+                        errors.email
                           ? 'border-red-500 focus:ring-red-500'
                           : 'border-charcoal-700 focus:border-gold-subtle focus:ring-saffron-500'
                       }`}
                     />
                   </div>
-                  {errors.phone && (
+                  {errors.email && (
                     <p className="mt-1.5 text-xs text-red-400 flex items-center gap-1">
                       <AlertCircle className="w-3 h-3" />
-                      {errors.phone}
+                      {errors.email}
                     </p>
                   )}
                 </div>
@@ -264,7 +274,7 @@ export const ReservationForm: React.FC<ReservationFormProps> = ({ initialRequest
                     <input
                       id="res-date"
                       type="date"
-                      min={today}
+                      min={TODAY_DATE}
                       value={formData.date}
                       onChange={(e) => setFormData({ ...formData, date: e.target.value })}
                       className={`w-full pl-10 pr-4 py-3 rounded-xl bg-charcoal-950 border text-ivory-100 text-sm focus:outline-none focus:ring-1 transition-colors ${
@@ -285,7 +295,7 @@ export const ReservationForm: React.FC<ReservationFormProps> = ({ initialRequest
                 {/* Time Slot */}
                 <div>
                   <label htmlFor="res-time" className="block text-xs uppercase tracking-wider text-ivory-300 font-medium mb-2">
-                    Time Slot <span className="text-saffron-500">*</span>
+                    Dining Time <span className="text-saffron-500">*</span>
                   </label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-ivory-400">
@@ -300,17 +310,18 @@ export const ReservationForm: React.FC<ReservationFormProps> = ({ initialRequest
                       <optgroup label="Lunch Service">
                         <option value="12:00">12:00 PM</option>
                         <option value="12:30">12:30 PM</option>
-                        <option value="13:00">01:00 PM</option>
-                        <option value="13:30">01:30 PM</option>
-                        <option value="14:00">02:00 PM</option>
+                        <option value="13:00">1:00 PM</option>
+                        <option value="13:30">1:30 PM</option>
+                        <option value="14:00">2:00 PM</option>
+                        <option value="14:30">2:30 PM</option>
                       </optgroup>
                       <optgroup label="Dinner Service">
-                        <option value="19:00">07:00 PM</option>
-                        <option value="19:30">07:30 PM</option>
-                        <option value="20:00">08:00 PM</option>
-                        <option value="20:30">08:30 PM</option>
-                        <option value="21:00">09:00 PM</option>
-                        <option value="21:30">09:30 PM</option>
+                        <option value="19:00">7:00 PM</option>
+                        <option value="19:30">7:30 PM</option>
+                        <option value="20:00">8:00 PM</option>
+                        <option value="20:30">8:30 PM</option>
+                        <option value="21:00">9:00 PM</option>
+                        <option value="21:30">9:30 PM</option>
                         <option value="22:00">10:00 PM</option>
                       </optgroup>
                     </select>
@@ -320,7 +331,7 @@ export const ReservationForm: React.FC<ReservationFormProps> = ({ initialRequest
                 {/* Number of Guests */}
                 <div>
                   <label htmlFor="res-guests" className="block text-xs uppercase tracking-wider text-ivory-300 font-medium mb-2">
-                    Guests <span className="text-saffron-500">*</span>
+                    Party Size <span className="text-saffron-500">*</span>
                   </label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-ivory-400">
@@ -333,13 +344,13 @@ export const ReservationForm: React.FC<ReservationFormProps> = ({ initialRequest
                       className="w-full pl-10 pr-4 py-3 rounded-xl bg-charcoal-950 border border-charcoal-700 text-ivory-100 text-sm focus:outline-none focus:border-gold-subtle focus:ring-1 focus:ring-saffron-500 transition-colors"
                     >
                       <option value="1">1 Person (Solo Dining)</option>
-                      <option value="2">2 Guests (Couple)</option>
-                      <option value="3">3 Guests</option>
-                      <option value="4">4 Guests</option>
-                      <option value="5">5 Guests</option>
-                      <option value="6">6 Guests</option>
-                      <option value="8">8 Guests (Large Table)</option>
-                      <option value="10+">10+ Guests (Private Dining)</option>
+                      <option value="2">2 Persons (Intimate Table)</option>
+                      <option value="3">3 Persons</option>
+                      <option value="4">4 Persons</option>
+                      <option value="5">5 Persons</option>
+                      <option value="6">6 Persons</option>
+                      <option value="7">7 Persons</option>
+                      <option value="8">8+ Persons (Private Hall Request)</option>
                     </select>
                   </div>
                 </div>
@@ -347,15 +358,15 @@ export const ReservationForm: React.FC<ReservationFormProps> = ({ initialRequest
 
               {/* Special Requests */}
               <div>
-                <label htmlFor="res-requests" className="block text-xs uppercase tracking-wider text-ivory-300 font-medium mb-2">
-                  Special Requests / Dietary Preferences (Optional)
+                <label htmlFor="res-notes" className="block text-xs uppercase tracking-wider text-ivory-300 font-medium mb-2">
+                  Special Occasion or Culinary Preferences <span className="text-ivory-500">(Optional)</span>
                 </label>
                 <div className="relative">
                   <div className="absolute top-3 left-3.5 pointer-events-none text-ivory-400">
                     <MessageSquare className="w-4 h-4" />
                   </div>
                   <textarea
-                    id="res-requests"
+                    id="res-notes"
                     rows={3}
                     value={formData.specialRequests}
                     onChange={(e) => setFormData({ ...formData, specialRequests: e.target.value })}
@@ -378,13 +389,13 @@ export const ReservationForm: React.FC<ReservationFormProps> = ({ initialRequest
 
                 <div className="text-center sm:text-right">
                   <span className="text-xs text-ivory-400 block">
-                    Direct phone assistance available during dining hours:
+                    Instant confirmation dispatched to your email
                   </span>
                   <a
-                    href={`tel:${RESTAURANT_CONFIG.phone}`}
-                    className="mt-1 text-xs text-gold-400 hover:text-gold-300 font-medium underline underline-offset-4 inline-flex items-center gap-1 font-mono"
+                    href={`mailto:${RESTAURANT_CONFIG.email}`}
+                    className="mt-1 text-xs text-gold-400 hover:text-gold-300 font-medium underline underline-offset-4 inline-flex items-center gap-1"
                   >
-                    <span>{RESTAURANT_CONFIG.phone}</span>
+                    <span>{RESTAURANT_CONFIG.email}</span>
                   </a>
                 </div>
               </div>
